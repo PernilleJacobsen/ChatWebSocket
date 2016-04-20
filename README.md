@@ -59,16 +59,30 @@ Bidirectonal messages between server and client.
 Each side can close the connection
 
 The client estabilshes a WebSocket connection through a Websocket handshake, by sending a regular HTTP request to the server. In the header of this request, there's an Upgrade header which tells the server that the client waats to establish a WebSocket connection.
+--------
 GET ws://websocket.example.com/ HTTP/1.1
+
 Origin: http://example.com
+
 Connection: Upgrade
+
 Host: websocket.example.com
+
 Upgrade: websocket
+--------
+
 If the server supports WebSocket connections, it sends back a response with an Upgrade header.
+---------
+
 HTTP/1.1 101 WebSocket Protocol Handshake
+
 Date: Wed, 16 Oct 2013 10:07:34 GMT
+
 Connection: Upgrade
+
 Upgrade: WebSocket
+------------
+
 
 Now that the handshake is complete, all traffic from here on will be using TCP instead of HTTP. Now both the client and server 
 can send data to each other. The transfers no longer need all the overhead that a HTTP request normally would, so even though 
